@@ -19,6 +19,7 @@
         "views/lunch_menu_views.xml",
         "views/website_views.xml",
         "views/lunch_week_views.xml",
+        "data/lunch_emails.xml",
     ],
     "application": True,
     "installable": True,
