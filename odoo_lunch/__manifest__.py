@@ -18,6 +18,7 @@
         "views/odoo_lunch_menus.xml",
         "views/lunch_menu_views.xml",
         "views/website_views.xml",
+        "views/lunch_week_views.xml",
     ],
     "application": True,
     "installable": True,

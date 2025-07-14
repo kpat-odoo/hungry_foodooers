@@ -26,4 +26,16 @@
             </form>
         </field>
     </record>
+
+    <record id="lunch_menu_list_view" model="ir.ui.view">
+        <field name="name">lunch.menu.list.view</field>
+        <field name="model">lunch.menu</field>
+        <field name="arch" type="xml">
+            <list string="Lunch Menu">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="stage" widget="statusbar" statusbar_visible="draft,confirmed,done,cancelled"/>
+            </list>
+        </field>
+    </record>
 </odoo>
