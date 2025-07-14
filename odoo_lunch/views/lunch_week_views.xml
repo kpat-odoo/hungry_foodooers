@@ -57,13 +57,13 @@
             </list>
         </field>
     </record>
-    <!-- <record id="lunch_week_view_calendar" model="ir.ui.view">
+    <record id="lunch_week_view_calendar" model="ir.ui.view">
         <field name="name">lunch.week.view.calendar</field>
         <field name="model">lunch.week</field>
         <field name="arch" type="xml">
-            <calendar string="Lunch" date_start="date_start" date_end="date_end">
+            <calendar string="Lunch" date_start="date_start" date_stop="date_end">
                 <field name="name"/>
             </calendar>
         </field>
-    </record> -->
+    </record>
 </odoo>
