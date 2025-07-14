@@ -37,6 +37,7 @@
                                 <list string="Menu Items" editable="bottom" limit="200" decoration-warning="stage in ['draft', 'confirmed']">
                                     <field name="name" placeholder="Menu Name"/>
                                     <field name="date" placeholder="Menu Date"/>
+                                    <field name="category"/>
                                     <field name="stage"/>
                                 </list>
                             </field>
@@ -55,15 +56,6 @@
                 <field name="date_start"/>
                 <field name="date_end"/>
             </list>
-        </field>
-    </record>
-    <record id="lunch_week_view_calendar" model="ir.ui.view">
-        <field name="name">lunch.week.view.calendar</field>
-        <field name="model">lunch.week</field>
-        <field name="arch" type="xml">
-            <calendar string="Lunch" date_start="date_start" date_stop="date_end">
-                <field name="name"/>
-            </calendar>
         </field>
     </record>
 </odoo>

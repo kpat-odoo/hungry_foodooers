@@ -2,6 +2,8 @@ from odoo import fields, models, api
 
 from datetime import datetime, time
 
+from dateutil.relativedelta import relativedelta
+ 
 
 class LunchMenu(models.Model):
     _name = "lunch.menu"
@@ -31,7 +33,6 @@ class LunchMenu(models.Model):
         default="main_course",
     )
     event = fields.Many2one('calendar.event', string='Calendar Event')
-
 
     @api.model
     def create(self, vals):
@@ -74,3 +75,10 @@ class LunchMenu(models.Model):
             event = self.env['calendar.event'].create(event_vals)
             self.event = event.id
 
+    is_all_week = fields.Boolean(string="For All Week", default=False)
+    date_end = fields.Date(string="End Date", compute="_compute_end_date")
+
+    @api.depends("is_all_week")
+    def _compute_end_date(self):
+        for menu in self:
+            menu.date_end = menu.date + relativedelta(days=(4 - menu.date.weekday())) if menu.is_all_week else menu.date
