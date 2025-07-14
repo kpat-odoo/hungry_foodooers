@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_rsvp_lockout" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.calendar.rsvp.lockout</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[last()]" position="after">
+                <setting string="Lunch RSVP Lock-Out" help="Settings related to RSVP lock-out timing for lunch events.">
+                    <div class="content-group">
+                        <div class="row mt16">
+                            <label for="rsvp_lockout_days" class="col-lg-3 o_light_label" string="RSVP Lock-Out Period (Days)"/>
+                            <div class="col-lg-9">
+                                <field name="rsvp_lockout_days" class="o_input"/>
+                                <div class="text-muted mt8">
+                                    Number of days before the event when attendees can no longer change their RSVP status. Set 0 to disable lock-out.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>
