@@ -18,7 +18,7 @@ class LunchMenu(models.Model):
         default="draft",
         required=True,
     )
-    ingredients = fields.Char(string="Ingredient")
+    ingredients = fields.Text(string="Ingredient")
     allergy_info = fields.Char(string="Allergy Information")
     category = fields.Selection(
         selection=[

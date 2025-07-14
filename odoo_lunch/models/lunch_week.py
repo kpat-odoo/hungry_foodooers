@@ -19,3 +19,6 @@ class LunchWeek(models.Model):
         template_id = self.env.ref('odoo_lunch.rsvp_reminder', raise_if_not_found=False)
         for record in self:
             template_id.send_mail(record.id, force_send=True)
+
+    # def create(self):
+    #     pass
