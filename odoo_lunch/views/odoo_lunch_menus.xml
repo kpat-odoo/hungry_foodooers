@@ -4,24 +4,43 @@
         <record id="action_view_week_menu" model="ir.actions.act_window">
             <field name="name">View weekly menu</field>
             <field name="res_model">lunch.week</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form,calendar</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Plan weekly menu!
                 </p>
             </field>
         </record>
+
+        <record id="action_view_day_menu" model="ir.actions.act_window">
+            <field name="name">View Menu</field>
+            <field name="res_model">lunch.menu</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Plan your lunch menu!
+                </p>
+            </field>
+        </record>
+        
         <menuitem
             id="odoo_lunch_menu_main_menu"
             name="Odoo Lunch"
             sequence="10"
             groups="base.group_user"/>
+
         <menuitem
             id="lunch_week_menu"
             name="Weekly Lunch"
             action="action_view_week_menu"
-            groups="base.group_user"
             parent="odoo_lunch_menu_main_menu"
             sequence="10"/>
+
+        <menuitem
+            id="lunch_menu_menu"
+            name="Lunch"
+            action="action_view_day_menu"
+            parent="odoo_lunch_menu_main_menu"
+            sequence="11"/>
     </data>
 </odoo>

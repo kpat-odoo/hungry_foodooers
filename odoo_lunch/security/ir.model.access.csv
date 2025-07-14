@@ -1,5 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_model_lunch_menu_admin,model_lunch_menu_admin,model_lunch_item,odoo_lunch.group_admin,1,1,1,1
-access_model_lunch_menu,model_lunch_menu,model_lunch_item,base.group_user,1,1,0,0
+access_model_lunch_menu_admin,model_lunch_menu_admin,model_lunch_menu,odoo_lunch.group_admin,1,1,1,1
+access_model_lunch_menu,model_lunch_menu,model_lunch_menu,base.group_user,1,1,0,0
 access_model_lunch_item_admin,model_lunch_item_admin,model_lunch_item,odoo_lunch.group_admin,1,1,1,1
 access_model_lunch_item,model_lunch_item,model_lunch_item,base.group_user,1,1,0,0
+access_model_lunch_week_admin,model_lunch_week_admin,model_lunch_week,odoo_lunch.group_admin,1,1,1,1
+access_model_lunch_week,model_lunch_week,model_lunch_week,base.group_user,1,1,0,0
