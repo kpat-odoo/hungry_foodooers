@@ -2,7 +2,7 @@ from odoo import api, fields, models
 from datetime import datetime, time
 
 from dateutil.relativedelta import relativedelta
- 
+
 
 class LunchMenu(models.Model):
     _name = "lunch.menu"

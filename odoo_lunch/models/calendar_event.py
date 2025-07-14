@@ -1,6 +1,7 @@
-from odoo import api, models, fields
+from odoo import models, fields
 from odoo.exceptions import ValidationError
 from datetime import timedelta
+
 
 class MyCalendarEvent(models.Model):
     _inherit = 'calendar.event'
@@ -8,7 +9,7 @@ class MyCalendarEvent(models.Model):
     def change_attendee_status(self, status, recurrence_update_setting):
         config = self.env['ir.config_parameter'].sudo()
         lockout_days_str = config.get_param('rsvp_lockout_days')
-        
+
         try:
             lockout_days = int(lockout_days_str)
         except ValueError:
@@ -26,6 +27,7 @@ class MyCalendarEvent(models.Model):
                 )
 
         return super().change_attendee_status(status, recurrence_update_setting)
+
 
 class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'

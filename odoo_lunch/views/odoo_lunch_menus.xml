@@ -42,19 +42,20 @@
             id="odoo_lunch_menu_main_menu"
             name="Odoo Lunch"
             sequence="10"
+            web_icon="odoo_lunch,static/description/icon.png"
             groups="base.group_user"/>
-
-        <menuitem
-            id="lunch_week_menu"
-            name="Weekly Lunch"
-            action="action_view_week_menu"
-            parent="odoo_lunch_menu_main_menu"
-            sequence="11"/>
 
         <menuitem
             id="lunch_menu_menu"
             name="Lunch"
             action="action_view_day_menu"
+            parent="odoo_lunch_menu_main_menu"
+            sequence="10"/>
+
+        <menuitem
+            id="lunch_week_menu"
+            name="Weekly Lunch"
+            action="action_view_week_menu"
             parent="odoo_lunch_menu_main_menu"
             sequence="11"/>
 
