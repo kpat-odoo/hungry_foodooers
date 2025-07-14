@@ -57,17 +57,17 @@ class LunchMenu(models.Model):
         res = super().write(vals)
 
         for record in self:
-            if "date" in vals or "name" in vals:
+            if "stage" in vals or "date" in vals or "name" in vals:
                 record._create_calendar_event()
         return res
 
     def _create_calendar_event(self):
         """Creates or updates a calendar event for this lunch menu and invites all partners."""
-        if not self.date:
+        if self.stage == "draft" or not self.date:
             return
 
         start_dt = datetime.combine(self.date, time(9, 0))
-        end_dt = datetime.combine(self.date, time(17, 0))
+        end_dt = datetime.combine(self.date_end, time(17, 0))
 
         all_partners = self.env["res.partner"].search([])
 
@@ -75,7 +75,7 @@ class LunchMenu(models.Model):
             "name": f"Lunch: {self.name}",
             "start": start_dt,
             "stop": end_dt,
-            "allday": False,
+            "allday": True,
             "partner_ids": [(6, 0, all_partners.ids)],
         }
 

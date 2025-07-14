@@ -20,5 +20,3 @@ class LunchWeek(models.Model):
         for record in self:
             template_id.send_mail(record.id, force_send=True)
 
-    # def create(self):
-    #     pass
