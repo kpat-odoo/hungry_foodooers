@@ -6,6 +6,12 @@
         <field name="model">lunch.week</field>
         <field name="arch" type="xml">
             <form string="Weekly Lunch Menu">
+                <header>
+                    <button name="action_send_rsvp_email" type="object"
+                            string="Send Reminder"
+                            class="btn-primary"
+                            confirm="Are you sure you want to send reminders?" />
+                </header>
                 <sheet>
                     <group>
                         <field name="name" placeholder="Week Name"/>

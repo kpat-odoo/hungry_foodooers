@@ -14,3 +14,8 @@ class LunchWeek(models.Model):
         string="Stage",
     )
     menu_ids = fields.Many2many(string="Menus", comodel_name="lunch.menu")
+
+    def action_send_rsvp_email(self):
+        template_id = self.env.ref('odoo_lunch.rsvp_reminder', raise_if_not_found=False)
+        for record in self:
+            template_id.send_mail(record.id, force_send=True)
