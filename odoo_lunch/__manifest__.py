@@ -20,6 +20,7 @@
         "views/lunch_menu_views.xml",
         "views/website_views.xml",
         "views/lunch_week_views.xml",
+        'views/res_config_settings_views.xml',
         "data/lunch_emails.xml",
     ],
     "application": True,
