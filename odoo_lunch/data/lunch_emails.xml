@@ -12,6 +12,18 @@
                         <br/>
                         Please RSVP for the lunch for this week!
                         <br/>
+                        <ul>
+                            <t t-foreach="object.menu_ids.sorted('date')" t-as="menu">
+                                <li>
+                                    <t t-if="menu.is_all_week"> 
+                                        <t t-esc="menu.name"/>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-esc="menu.date.strftime('%A')"/> : <t t-esc="menu.name"/>
+                                    </t>
+                                </li>
+                            </t>
+                        </ul>
                         <t t-set="base_url" t-value="object.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
                         <a t-att-href="base_url + '/odoo/calendar'">Go to Calendar</a>
                         <br/>
