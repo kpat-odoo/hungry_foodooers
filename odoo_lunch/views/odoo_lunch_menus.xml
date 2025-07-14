@@ -22,6 +22,22 @@
                 </p>
             </field>
         </record>
+
+        <!-- Group by registration -->
+        <record id="act_rsvp_report" model="ir.actions.act_window">
+            <field name="name">RSVP Analysis</field>
+            <field name="res_model">lunch.menu</field>
+            <field name="view_mode">pivot,graph</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_empty_folder">
+                No data yet!
+              </p><p>
+                This report allows you to analyze the RSVP data for your lunch menus.
+                You can group by various fields such as date, ingredients, and category.
+                Use the pivot table to summarize the data and gain insights into your lunch menu planning.
+              </p>
+            </field>
+        </record>
         
         <menuitem
             id="odoo_lunch_menu_main_menu"
@@ -41,6 +57,20 @@
             name="Lunch"
             action="action_view_day_menu"
             parent="odoo_lunch_menu_main_menu"
-            sequence="10"/>
+            sequence="11"/>
+
+        <menuitem id="menu_lunch_reports"
+                  name="Reporting"
+                  groups="base.group_user"
+                  parent="odoo_lunch_menu_main_menu"
+                  sequence="12"
+        >
+                <menuitem id="menu_rsvp_analysis"
+                          action="act_rsvp_report"
+                          groups="base.group_user"
+                          name="RSVP Analysis"
+                          sequence="10"
+                />
+        </menuitem>
     </data>
 </odoo>

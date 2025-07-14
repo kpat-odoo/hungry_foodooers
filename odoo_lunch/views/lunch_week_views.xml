@@ -12,12 +12,11 @@
                             class="btn-primary"
                             confirm="Are you sure you want to send reminders?" />
 
-                    <field name="stage" widget="statusbar" statusbar_visible="draft,confirmed,posted,cancelled"/>
+                    <field name="stage" widget="statusbar" statusbar_visible="draft,confirmed,posted,cancelled" options="{'clickable': '1'}"/>
                 </header>
                 <sheet>
                     <group>
                         <field name="name" placeholder="Week Name"/>
-                        <!-- <span class="fa fa-clock-o me-2" title="Dates"/> -->
                         <div>
                             <strong>Dates </strong>
                             <div style="display:inline-block; vertical-align: middle;">
@@ -34,11 +33,12 @@
                     <notebook>
                         <page string="Menu Items" name="menu_items">
                             <field name="menu_ids" widget="sol_o2m" mode="list" readonly="stage == 'cancel' or stage == 'posted'">
-                                <list string="Menu Items" editable="bottom" limit="200" decoration-warning="stage in ['draft', 'confirmed']">
+                                <list string="Menu Items" editable="bottom" limit="200" decoration-warning="stage in ['draft']">
                                     <field name="name" placeholder="Menu Name"/>
                                     <field name="date" placeholder="Menu Date"/>
                                     <field name="category"/>
                                     <field name="stage"/>
+                                    <field name="event"/>
                                 </list>
                             </field>
                         </page>

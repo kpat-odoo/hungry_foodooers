@@ -1,5 +1,4 @@
-from odoo import fields, models, api
-
+from odoo import api, fields, models
 from datetime import datetime, time
 
 from dateutil.relativedelta import relativedelta
@@ -32,11 +31,22 @@ class LunchMenu(models.Model):
         ],
         default="main_course",
     )
-    event = fields.Many2one('calendar.event', string='Calendar Event')
 
-    @api.model
-    def create(self, vals):
-        lunch_menu = super().create(vals)
+    image = fields.Binary(string="Meal")
+
+    event = fields.Many2one("calendar.event", string="Calendar Event")
+
+    accepted_count = fields.Integer(related="event.accepted_count", store=True)
+    declined_count = fields.Integer(related="event.declined_count", store=True)
+    awaiting_count = fields.Integer(related="event.awaiting_count", store=True)
+    tentative_count = fields.Integer(related="event.tentative_count", store=True)
+
+    is_all_week = fields.Boolean(string="For All Week", default=False)
+    date_end = fields.Date(string="End Date", compute="_compute_end_date")
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        lunch_menu = super().create(vals_list)
 
         if lunch_menu.date:
             lunch_menu._create_calendar_event()
@@ -47,7 +57,7 @@ class LunchMenu(models.Model):
         res = super().write(vals)
 
         for record in self:
-            if 'date' in vals or 'name' in vals:
+            if "date" in vals or "name" in vals:
                 record._create_calendar_event()
         return res
 
@@ -59,24 +69,21 @@ class LunchMenu(models.Model):
         start_dt = datetime.combine(self.date, time(9, 0))
         end_dt = datetime.combine(self.date, time(17, 0))
 
-        all_partners = self.env['res.partner'].search([])
+        all_partners = self.env["res.partner"].search([])
 
         event_vals = {
-            'name': f"Lunch: {self.name}",
-            'start': start_dt,
-            'stop': end_dt,
-            'allday': False,
-            'partner_ids': [(6, 0, all_partners.ids)],
+            "name": f"Lunch: {self.name}",
+            "start": start_dt,
+            "stop": end_dt,
+            "allday": False,
+            "partner_ids": [(6, 0, all_partners.ids)],
         }
 
         if self.event:
             self.event.write(event_vals)
         else:
-            event = self.env['calendar.event'].create(event_vals)
+            event = self.env["calendar.event"].create(event_vals)
             self.event = event.id
-
-    is_all_week = fields.Boolean(string="For All Week", default=False)
-    date_end = fields.Date(string="End Date", compute="_compute_end_date")
 
     @api.depends("is_all_week")
     def _compute_end_date(self):

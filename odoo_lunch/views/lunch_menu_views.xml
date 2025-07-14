@@ -10,6 +10,7 @@
                 </header>
                 <sheet>
                     <group>
+                        <field name="image" widget="image" class="oe_avatar" options="{'preview_image': 'image'}"/>
                         <field name="name" placeholder="Menu Name"/>
                         <field name="date" placeholder="Menu Date"/>
                         <field name="date_end" invisible="1"/>
@@ -34,7 +35,7 @@
                 <field name="ingredients"/>
                 <field name="allergy_info"/>
                 <field name="category"/>
-                <field name="stage" widget="statusbar" statusbar_visible="draft,confirmed,done,cancelled"/>
+                <field name="stage"/>
             </list>
         </field>
     </record>

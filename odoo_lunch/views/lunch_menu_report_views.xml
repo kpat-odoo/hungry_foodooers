@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="lunch_rsvp_analysis_report_pivot" model="ir.ui.view">
+        <field name="name">lunch.rsvp.analysis.report.pivot</field>
+        <field name="model">lunch.menu</field>
+        <field name="arch" type="xml">
+            <pivot string="RSVP Analysis" sample="1">
+                <field name="stage" type="row"/>
+                <field name="date" interval="month" type="col"/>
+                <field name="category"/>
+                <field name="accepted_count"/>
+                <field name="declined_count"/>
+                <field name="awaiting_count"/>
+                <field name="tentative_count"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="lunch_rsvp_analysis_report_pivot" model="ir.ui.view">
+        <field name="name">lunch.rsvp.analysis.report.pivot</field>
+        <field name="model">lunch.menu</field>
+        <field name="arch" type="xml">
+            <graph string="Budget Report" type="line">
+                <field name="stage" type="row"/>
+                <field name="date" interval="month" type="col"/>
+                <field name="category"/>
+                <field name="accepted_count"/>
+                <field name="declined_count"/>
+                <field name="awaiting_count"/>
+                <field name="tentative_count"/>
+            </graph>
+        </field>
+    </record>
+</odoo>
