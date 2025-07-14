@@ -1,4 +1,6 @@
-from odoo import fields, models
+from odoo import fields, models, api
+
+from datetime import datetime, time
 
 
 class LunchMenu(models.Model):
@@ -28,3 +30,47 @@ class LunchMenu(models.Model):
         ],
         default="main_course",
     )
+    event = fields.Many2one('calendar.event', string='Calendar Event')
+
+
+    @api.model
+    def create(self, vals):
+        lunch_menu = super().create(vals)
+
+        if lunch_menu.date:
+            lunch_menu._create_calendar_event()
+
+        return lunch_menu
+
+    def write(self, vals):
+        res = super().write(vals)
+
+        for record in self:
+            if 'date' in vals or 'name' in vals:
+                record._create_calendar_event()
+        return res
+
+    def _create_calendar_event(self):
+        """Creates or updates a calendar event for this lunch menu and invites all partners."""
+        if not self.date:
+            return
+
+        start_dt = datetime.combine(self.date, time(9, 0))
+        end_dt = datetime.combine(self.date, time(17, 0))
+
+        all_partners = self.env['res.partner'].search([])
+
+        event_vals = {
+            'name': f"Lunch: {self.name}",
+            'start': start_dt,
+            'stop': end_dt,
+            'allday': False,
+            'partner_ids': [(6, 0, all_partners.ids)],
+        }
+
+        if self.event:
+            self.event.write(event_vals)
+        else:
+            event = self.env['calendar.event'].create(event_vals)
+            self.event = event.id
+

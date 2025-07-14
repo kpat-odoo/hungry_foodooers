@@ -15,6 +15,7 @@
                         <field name="ingredients"/>
                         <field name="allergy_info"/>
                         <field name="category"/>
+                        <field name="event" />
                     </group>
                 </sheet>
             </form>

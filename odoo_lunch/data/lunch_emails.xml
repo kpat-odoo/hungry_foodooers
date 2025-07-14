@@ -10,13 +10,10 @@
                 <div style="margin: 0px; padding: 0px;">
                     <p>
                         <br/>
-                        We are disappointed to see that despite sending a reminder, that your account is now seriously overdue.
+                        Please RSVP for the lunch for this week!
                         <br/>
-                        It is essential that immediate payment is made, otherwise we will have to consider placing a stop on your account which means that we will no longer be able to supply your company with (goods/services). Please, take appropriate measures in order to carry out this payment in the next 8 days.
-                        <br/>
-                        If there is a problem with paying invoice that we are not aware of, do not hesitate to contact our accounting department, so that we can resolve the matter quickly.
-                        <br/>
-                        Details of due payments is printed below.
+                        <t t-set="base_url" t-value="object.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+                        <a t-att-href="base_url + '/odoo/calendar'">Go to Calendar</a>
                         <br/>
                         Best Regards,
                     </p>
