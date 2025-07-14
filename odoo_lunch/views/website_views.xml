@@ -31,7 +31,8 @@
             <div class="container" style="text-align: center; margin-top: 100px;">
                 <h1>Hello <t t-esc="username"/>! You have checked in for today</h1>
                 <h1>Today's meal is <t t-esc="menu_name" /></h1>
-                <p>Allergens: <t t-esc="allergy_info" /></p>
+                <img t-att-src="'data:image/png;base64,%s' % img_str" alt="Meal Image" style="max-width: 300px;"/>
+                <p>Allergens: <t t-esc="allergy_ino" /></p>
             </div>
         </div>
     </template>

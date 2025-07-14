@@ -48,9 +48,11 @@ class LunchKioskController(http.Controller):
             })
 
         # TODO set the user as checked-in in the backend
+        img_str = str(menu.image, encoding='utf-8')
 
         return request.render('odoo_lunch.lunch_checked_in', {
             'username': username,
             'menu_name': menu.name,
             'allergy_info': menu.allergy_info,
+            'img_str': img_str,
         })
