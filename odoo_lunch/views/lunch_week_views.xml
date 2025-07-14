@@ -11,23 +11,37 @@
                             string="Send Reminder"
                             class="btn-primary"
                             confirm="Are you sure you want to send reminders?" />
+
+                    <field name="stage" widget="statusbar" statusbar_visible="draft,confirmed,posted,cancelled"/>
                 </header>
                 <sheet>
                     <group>
                         <field name="name" placeholder="Week Name"/>
                         <!-- <span class="fa fa-clock-o me-2" title="Dates"/> -->
-                        <div class="oe_inline">
-                            <div class="oe_form_field">
+                        <div>
+                            <strong>Dates </strong>
+                            <div style="display:inline-block; vertical-align: middle;">
                                 <field name="date_start"/>
                             </div>
-                            <i class="fa fa-long-arrow-right mx-2" aria-label="Arrow icon" title="Arrow"/>
-                            <div class="oe_form_field">
+                            <div style="display:inline-block; vertical-align: middle; padding: 0 8px;">
+                                <i class="fa fa-long-arrow-right" aria-label="Arrow icon" title="Arrow"/>
+                            </div>
+                            <div style="display:inline-block; vertical-align: middle;">
                                 <field name="date_end"/>
                             </div>
                         </div>
-
                     </group>
-                    <field name="menu_ids" widget="many2many_tags"/>
+                    <notebook>
+                        <page string="Menu Items" name="menu_items">
+                            <field name="menu_ids" widget="sol_o2m" mode="list" readonly="stage == 'cancel' or stage == 'posted'">
+                                <list string="Menu Items" editable="bottom" limit="200" decoration-warning="stage in ['draft', 'confirmed']">
+                                    <field name="name" placeholder="Menu Name"/>
+                                    <field name="date" placeholder="Menu Date"/>
+                                    <field name="stage"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

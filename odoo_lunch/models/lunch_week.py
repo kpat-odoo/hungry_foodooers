@@ -9,7 +9,7 @@ class LunchWeek(models.Model):
     date_start = fields.Date(string="Week start date")
     date_end = fields.Date(string="Week end date")
     stage = fields.Selection(
-        selection=[("draft", "Draft"), ("confirmed", "Confirmed"), ("posted", "Posted")],
+        selection=[("draft", "Draft"), ("confirmed", "Confirmed"), ("posted", "Posted"), ("cancel", "Cancelled")],
         default="draft",
         string="Stage",
     )

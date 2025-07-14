@@ -18,4 +18,13 @@ class LunchMenu(models.Model):
         default="draft",
         required=True,
     )
-    lunch_item_ids = fields.One2many(comodel_name="lunch.item", inverse_name="lunch_menu_id", string="Lunch Items")
+    ingredients = fields.Char(string="Ingredient")
+    allergy_info = fields.Char(string="Allergy Information")
+    category = fields.Selection(
+        selection=[
+            ("main_course", "Main Course"),
+            ("side_dish", "Side Dish"),
+            ("alternative", "Alternative"),
+        ],
+        default="main_course",
+    )
