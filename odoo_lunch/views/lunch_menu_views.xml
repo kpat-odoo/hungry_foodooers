@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="lunch_menu_form_view" model="ir.ui.view">
+        <field name="name">lunch.menu.form.view</field>
+        <field name="model">lunch.menu</field>
+        <field name="arch" type="xml">
+            <form string="Lunch Menu">
+                <header>
+                    <field name="stage" widget="statusbar" statusbar_visible="draft,confirmed,done,cancelled"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" placeholder="Menu Name"/>
+                        <field name="date" placeholder="Menu Date"/>
+                    </group>
+                    <!-- <group>
+                        <field name="lunch_item_ids" widget="one2many_list">
+                            <tree editable="bottom">
+                                <field name="ingredients"/>
+                                <field name="allergy_info"/>
+                                <field name="category"/>
+                            </tree>
+                        </field>
+                    </group> -->
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
