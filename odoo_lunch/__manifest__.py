@@ -25,4 +25,5 @@
     ],
     "application": True,
     "installable": True,
+    "post_init_hook": "create_rsvp_report_view",
 }
