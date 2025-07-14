@@ -13,11 +13,47 @@
     </template>
 
     <template id="lunch_checked_in" name="Lunch Checked In">
-        <div class="oe_structure">
+        <div style="
+            background: url('/web_enterprise/static/img/background-light.svg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            ">
             <div class="container" style="text-align: center; margin-top: 100px;">
-                <h1>Hello <t t-esc="username"/>! You have checked in for</h1>
-                <h1 t-esc="check_in_date"/>
-                <h1>Today's meal is ... Allergens ...</h1>
+                <h1>Hello <t t-esc="username"/>! You have checked in for today</h1>
+                <h1>Today's meal is <t t-esc="menu_name" /></h1>
+                <p>Allergens: <t t-esc="allergy_info" /></p>
+            </div>
+        </div>
+    </template>
+
+    <template id="lunch_checkin_error" name="Lunch Checked In">
+        <div style="
+            background: url('/web_enterprise/static/img/background-light.svg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            ">
+            <div class="container" style="text-align: center; margin-top: 100px;">
+                <div style="
+                    background-color: #f8d7da;
+                    color: #721c24;
+                    border: 1px solid #f5c6cb;
+                    padding: 20px;
+                    border-radius: 5px;
+                    margin: 40px auto;
+                    max-width: 600px;
+                    font-family: sans-serif;
+                    ">
+                    <h1>Check-In Failed</h1>
+                    <h2>Hello <t t-esc="username"/>,</h2>
+                    <h2>You checked in but hadn't RSVP'd for lunch today.</h2>
+                    <h2>Please see NKO IMMEDIDATELY regarding disciplinary action!!!</h2>
+                </div>
             </div>
         </div>
     </template>
