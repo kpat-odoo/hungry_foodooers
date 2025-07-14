@@ -3,3 +3,5 @@ access_model_lunch_menu_admin,model_lunch_menu_admin,model_lunch_menu,odoo_lunch
 access_model_lunch_menu,model_lunch_menu,model_lunch_menu,base.group_user,1,1,0,0
 access_model_lunch_week_admin,model_lunch_week_admin,model_lunch_week,odoo_lunch.group_admin,1,1,1,1
 access_model_lunch_week,model_lunch_week,model_lunch_week,base.group_user,1,1,0,0
+access_model_lunch_menu_rsvp_report,model_lunch_menu_rsvp_report,model_lunch_menu_rsvp_report,base.group_user,1,0,0,0
+access_model_lunch_menu_rsvp_report_admin,model_lunch_menu_rsvp_report_admin,model_lunch_menu_rsvp_report,odoo_lunch.group_admin,1,1,1,1

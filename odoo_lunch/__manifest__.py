@@ -15,6 +15,7 @@
     "data": [
         "security/odoo_lunch_security.xml",
         "security/ir.model.access.csv",
+        "reports/rsvp_analysis.xml",
         "views/odoo_lunch_menus.xml",
         "views/lunch_menu_views.xml",
         "views/website_views.xml",
