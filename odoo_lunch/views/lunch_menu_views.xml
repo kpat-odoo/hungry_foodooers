@@ -44,7 +44,8 @@
         <field name="model">lunch.menu</field>
         <field name="arch" type="xml">
             <calendar string="Lunch" date_start="date" date_stop="date_end" color="category">
-                <field name="name"/>
+                <field name="ingredients"/>
+                <field name="allergy_info" />
                 <field name="category"/>
             </calendar>
         </field>
